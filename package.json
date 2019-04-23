@@ -1,6 +1,6 @@
 {
   "name": "minikeyval",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tiny in-memory keyval store.",
   "main": "index.js",
   "license": "MIT",
