@@ -27,8 +27,8 @@ function start(port, callback) {
 
     app.post('/keyval/set/:key', function(req, res) {
         var apiKey = req.headers['api-key'];
-        if (!apiKey && request.query) {
-            apiKey = request.query['api-key'];
+        if (!apiKey && req.query) {
+            apiKey = req.query['api-key'];
         }
 
         if (apiKey) {
@@ -76,6 +76,5 @@ function numberOr(text, defaultNumber) {
     let result = Number(text);
     return Number.isNaN(result) ? defaultNumber : result;
 }
-
 
 start(Number(process.env.PORT || 80), null);
