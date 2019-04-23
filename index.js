@@ -26,10 +26,13 @@ function start(port, callback) {
     });
 
     app.post('/keyval/set/:key', function(req, res) {
-        var apiKeyFromHeader = req.headers['api-key'];
+        var apiKey = req.headers['api-key'];
+        if (!apiKey && request.query) {
+            apiKey = request.query['api-key'];
+        }
 
-        if (apiKeyFromHeader) {
-            if (apiKeyFromHeader === process.env.MKV_SET_API_KEY) {
+        if (apiKey) {
+            if (apiKey === process.env.MKV_SET_API_KEY) {
 
                 inMemoryMap[req.params.key] = {
                     set_ms: Date.now(),
